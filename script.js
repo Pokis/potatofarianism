@@ -1,35 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================
-     1. Language Switcher & Localization
+     1. Global DOM Selectors & State Variables
      ========================================== */
-  const langSwitchBtn = document.getElementById('lang-switch-btn');
   const body = document.body;
-
-  // Load language preference or default to Lithuanian if user locale is LT, else English
-  let currentLang = localStorage.getItem('religion_lang') || 'en';
-  setLanguage(currentLang);
-
-  langSwitchBtn.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'lt' : 'en';
-    setLanguage(currentLang);
-  });
-
-  function setLanguage(lang) {
-    localStorage.setItem('religion_lang', lang);
-    body.className = `lang-${lang}`;
-    
-    // Toggle active menu indicators based on current hash
-    updateActiveMenuLink();
-  }
-
-  /* ==========================================
-     2. Navigation Scroll Effects & Mobile Toggle
-     ========================================== */
+  const langBtns = document.querySelectorAll('.lang-btn');
   const header = document.querySelector('.main-header');
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu a');
+  const doctrineCards = document.querySelectorAll('.doctrine-card');
+  const faqTriggers = document.querySelectorAll('.faq-trigger');
+  const downloadStatutesBtn = document.getElementById('download-statutes-btn');
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
 
+  let particlesArray = [];
+  let mouse = { x: null, y: null, radius: 150 };
+
+  /* ==========================================
+     2. Language Switcher & Active Links Setup
+     ========================================== */
+  function setLanguage(lang) {
+    localStorage.setItem('religion_lang', lang);
+    body.className = `lang-${lang}`;
+    
+    // Toggle active state class on header buttons
+    langBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    
+    updateActiveMenuLink();
+  }
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedLang = btn.getAttribute('data-lang');
+      setLanguage(selectedLang);
+    });
+  });
+
+  // Highlight current section in navigation
+  function updateActiveMenuLink() {
+    let fromTop = window.scrollY + 100;
+    
+    navLinks.forEach(link => {
+      const sectionId = link.getAttribute('href');
+      if (sectionId === '#') return;
+      
+      const section = document.querySelector(sectionId);
+      if (section) {
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  /* ==========================================
+     3. Header Shrink & Mobile Toggle
+     ========================================== */
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       header.classList.add('shrink');
@@ -53,46 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Highlight current section in navigation
-  function updateActiveMenuLink() {
-    let fromTop = window.scrollY + 100;
-    
-    navLinks.forEach(link => {
-      // Find both versions of the link (EN and LT have separate anchors)
-      const sectionId = link.getAttribute('href');
-      if (sectionId === '#') return;
-      
-      const section = document.querySelector(sectionId);
-      if (section) {
-        if (
-          section.offsetTop <= fromTop &&
-          section.offsetTop + section.offsetHeight > fromTop
-        ) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      }
-    });
-  }
-
   /* ==========================================
-     3. Particle Background Canvas System
+     4. Canvas Particle System (Starch Sparks)
      ========================================== */
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let particlesArray = [];
-  let mouse = { x: null, y: null, radius: 150 };
-
-  // Adjust canvas size
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
 
-  // Capture mouse movement
   window.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
@@ -103,16 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     mouse.y = null;
   });
 
-  // Particle Class representing glowing starch sparks
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height + canvas.height; // Start below screen or randomly
-      if(Math.random() > 0.5) this.y = Math.random() * canvas.height;
+      this.y = Math.random() * canvas.height + canvas.height;
+      if (Math.random() > 0.5) this.y = Math.random() * canvas.height;
       this.size = Math.random() * 2.5 + 0.5;
       this.speedX = Math.random() * 0.4 - 0.2;
-      this.speedY = -(Math.random() * 0.8 + 0.2); // Float upwards
-      this.color = `rgba(212, 163, 92, ${Math.random() * 0.3 + 0.15})`; // Soft gold
+      this.speedY = -(Math.random() * 0.8 + 0.2);
+      this.color = `rgba(212, 163, 92, ${Math.random() * 0.3 + 0.15})`;
       this.angle = Math.random() * 360;
       this.spinSpeed = Math.random() * 0.02 - 0.01;
     }
@@ -122,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.x += this.speedX;
       this.angle += this.spinSpeed;
 
-      // Wrap around screen
       if (this.y < -10) {
         this.y = canvas.height + 10;
         this.x = Math.random() * canvas.width;
@@ -131,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         this.x = Math.random() * canvas.width;
       }
 
-      // Mouse interactive push away effect
       if (mouse.x != null && mouse.y != null) {
         let dx = this.x - mouse.x;
         let dy = this.y - mouse.y;
@@ -153,8 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.beginPath();
       ctx.arc(0, 0, this.size, 0, Math.PI * 2);
       ctx.fillStyle = this.color;
-      
-      // Dynamic glowing filter
       ctx.shadowBlur = this.size * 2;
       ctx.shadowColor = 'rgba(212, 163, 92, 0.5)';
       ctx.fill();
@@ -162,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Populate particles
   function initParticles() {
     particlesArray = [];
     const count = Math.floor((canvas.width * canvas.height) / 15000);
@@ -170,9 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       particlesArray.push(new Particle());
     }
   }
-  initParticles();
 
-  // Animation Loop
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particlesArray.forEach(p => {
@@ -181,29 +179,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     requestAnimationFrame(animate);
   }
-  animate();
 
-  // Reinitialize particles on resize to fit density
   window.addEventListener('resize', () => {
+    resizeCanvas();
     initParticles();
   });
 
   /* ==========================================
-     4. Doctrine Cards interaction
-     ========================================== */
-  const doctrineCards = document.querySelectorAll('.doctrine-card');
+     5. Doctrine Cards Click Flip Interaction
+     ========================================= */
   doctrineCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Toggle card flip on click
+    card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
   });
 
   /* ==========================================
-     5. FAQ Accordion Logic
+     6. FAQ Accordion Logic
      ========================================== */
-  const faqTriggers = document.querySelectorAll('.faq-trigger');
-  
   faqTriggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
       const parent = trigger.parentElement;
@@ -224,180 +217,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================
-     6. Signature Canvas Drawing Logic
+     7. Statutes Download Trigger
      ========================================== */
-  const sigCanvas = document.getElementById('signature-canvas');
-  const sigCtx = sigCanvas.getContext('2d');
-  const clearSigBtn = document.getElementById('clear-sig');
-  const clearSigLtBtn = document.getElementById('clear-sig-lt');
-  let isDrawing = false;
-  let signatureIsEmpty = true;
-
-  // Drawing settings
-  sigCtx.strokeStyle = '#d4a35c'; // Match --primary
-  sigCtx.lineWidth = 3;
-  sigCtx.lineCap = 'round';
-  sigCtx.lineJoin = 'round';
-
-  function getCoords(e) {
-    const rect = sigCanvas.getBoundingClientRect();
-    const scaleX = sigCanvas.width / rect.width;
-    const scaleY = sigCanvas.height / rect.height;
-    if (e.touches && e.touches.length > 0) {
-      return {
-        x: (e.touches[0].clientX - rect.left) * scaleX,
-        y: (e.touches[0].clientY - rect.top) * scaleY
-      };
-    } else {
-      return {
-        x: (e.clientX - rect.left) * scaleX,
-        y: (e.clientY - rect.top) * scaleY
-      };
-    }
-  }
-
-  function startDrawing(e) {
-    isDrawing = true;
-    signatureIsEmpty = false;
-    const coords = getCoords(e);
-    sigCtx.beginPath();
-    sigCtx.moveTo(coords.x, coords.y);
-  }
-
-  function draw(e) {
-    if (!isDrawing) return;
-    e.preventDefault(); // Prevent scrolling on touch devices
-    const coords = getCoords(e);
-    sigCtx.lineTo(coords.x, coords.y);
-    sigCtx.stroke();
-  }
-
-  function stopDrawing() {
-    isDrawing = false;
-  }
-
-  function clearSignature() {
-    sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
-    signatureIsEmpty = true;
-  }
-
-  // Desktop Mouse Events
-  sigCanvas.addEventListener('mousedown', startDrawing);
-  sigCanvas.addEventListener('mousemove', draw);
-  sigCanvas.addEventListener('mouseup', stopDrawing);
-  sigCanvas.addEventListener('mouseleave', stopDrawing);
-
-  // Mobile Touch Events
-  sigCanvas.addEventListener('touchstart', startDrawing);
-  sigCanvas.addEventListener('touchmove', draw);
-  sigCanvas.addEventListener('touchend', stopDrawing);
-
-  // Clear signature button binds
-  clearSigBtn.addEventListener('click', clearSignature);
-  clearSigLtBtn.addEventListener('click', clearSignature);
-
-  // Resize listener to prevent stretching sig canvas context
-  function initSigCanvasResolution() {
-    // Clear and match bounding dimensions
-    const rect = sigCanvas.getBoundingClientRect();
-    sigCanvas.width = rect.width;
-    sigCanvas.height = rect.height;
-    
-    // Restore styling properties lost during dimension changes
-    sigCtx.strokeStyle = '#d4a35c';
-    sigCtx.lineWidth = 3;
-    sigCtx.lineCap = 'round';
-    sigCtx.lineJoin = 'round';
-  }
-  initSigCanvasResolution();
-  window.addEventListener('resize', initSigCanvasResolution);
-
-  /* ==========================================
-     7. Founding Registry Form Submission
-     ========================================== */
-  const pledgeForm = document.getElementById('pledge-form');
-  const formSuccess = document.getElementById('form-success');
-  const pledgeCountEl = document.getElementById('pledge-count');
-  const pledgeCountLtEl = document.getElementById('pledge-count-lt');
-  const progressBarFill = document.getElementById('progress-bar-fill');
-  const disciplesList = document.getElementById('disciples-list');
-
-  // Check if visitor has already signed
-  const signedUser = localStorage.getItem('tuber_signed_user');
-  if (signedUser) {
-    const userData = JSON.parse(signedUser);
-    displaySignedState(userData.name, userData.city);
-  }
-
-  pledgeForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('pledge-name').value.trim();
-    const city = document.getElementById('pledge-city').value.trim();
-
-    if (signatureIsEmpty) {
-      alert(currentLang === 'en' ? 'Please provide your signature on the canvas to sign.' : 'Prašome pasirašyti tam skirtame laukelyje.');
-      return;
-    }
-
-    // Save state
-    const userData = { name, city };
-    localStorage.setItem('tuber_signed_user', JSON.stringify(userData));
-
-    // Animate list update
-    displaySignedState(name, city);
-  });
-
-  function displaySignedState(name, city) {
-    // Increment numbers: base is 11, becomes 12
-    const totalPledges = 12;
-    pledgeCountEl.textContent = totalPledges;
-    pledgeCountLtEl.textContent = totalPledges;
-    
-    // Update progress bar percentage (12/15 = 80%)
-    progressBarFill.style.width = '80%';
-
-    // Append user to top of the scrollable disciples list
-    const newItem = document.createElement('li');
-    newItem.className = 'disciple-item verified new-disciple';
-    
-    newItem.innerHTML = `
-      <div class="disciple-meta">
-        <span class="disciple-name">${escapeHTML(name)}</span>
-        <span class="disciple-addr">${escapeHTML(city)}, LT</span>
-      </div>
-      <span class="disciple-status" lang="en">Co-Founder</span>
-      <span class="disciple-status" lang="lt">Bendraįkūrėjis</span>
-    `;
-    
-    disciplesList.insertBefore(newItem, disciplesList.firstChild);
-
-    // Hide form, show success
-    pledgeForm.style.display = 'none';
-    formSuccess.style.display = 'block';
-
-    // Scroll disciples list to top to show newly added user
-    document.querySelector('.disciples-scroll-area').scrollTop = 0;
-  }
-
-  function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-      tag => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;'
-      }[tag] || tag)
-    );
+  if (downloadStatutesBtn) {
+    downloadStatutesBtn.addEventListener('click', () => {
+      window.print();
+    });
   }
 
   /* ==========================================
-     8. Download Statutes PDF Mock
+     8. Initialise Operations on Boot
      ========================================== */
-  const downloadStatutesBtn = document.getElementById('download-statutes-btn');
-  downloadStatutesBtn.addEventListener('click', () => {
-    // Elegant system print option that formats the statutes nicely
-    window.print();
-  });
+  resizeCanvas();
+  initParticles();
+  animate();
+
+  let currentLang = localStorage.getItem('religion_lang') || 'en';
+  setLanguage(currentLang);
 });
