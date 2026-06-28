@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Church of the Sacred Tuber | Šventojo Gumbelio Bažnyčia</title>
+  <meta name="description" content="Official portal of the Church of the Sacred Tuber (religion.potatoroad.lt). Explore our starch doctrines, the ten spudments, and our official statutes.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en">
+  <!-- Dynamic Particle Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Sticky Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="assets/images/church_seal.jpg" alt="Church Seal" class="logo-img">
+        <span class="logo-text" lang="en">Sacred Tuber</span>
+        <span class="logo-text" lang="lt">Šventasis Gumbelis</span>
+      </a>
+
+      <!-- Hamburger Menu for Mobile -->
+      <button class="nav-toggle" aria-label="Toggle menu" id="nav-toggle">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="#doctrine" lang="en">Doctrine</a><a href="#doctrine" lang="lt">Doktrina</a></li>
+          <li><a href="#spudments" lang="en">Spudments</a><a href="#spudments" lang="lt">Įsakymai</a></li>
+          <li><a href="#registry" lang="en">Founders</a><a href="#registry" lang="lt">Steigėjai</a></li>
+          <li><a href="#sanctuary" lang="en">Sanctuary</a><a href="#sanctuary" lang="lt">Šventovė</a></li>
+          <li><a href="#statutes" lang="en">Statutes</a><a href="#statutes" lang="lt">Įstatai</a></li>
+        </ul>
+      </nav>
+
+      <!-- Language Toggle Button -->
+      <button class="lang-switcher" id="lang-switch-btn" aria-label="Switch Language">
+        <span class="lang-btn-text" lang="en">LT 🇱🇹</span>
+        <span class="lang-btn-text" lang="lt">EN 🇬🇧</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-badge" lang="en">Established 2026</span>
+        <span class="hero-badge" lang="lt">Įkurta 2026 m.</span>
+        
+        <h1 class="hero-title" lang="en">The Church of the<br><span class="highlight">Sacred Tuber</span></h1>
+        <h1 class="hero-title" lang="lt">Šventojo Gumbelio<br><span class="highlight">Bažnyčia</span></h1>
+        
+        <p class="hero-subtitle" lang="en">From the silence of the fertile soil, we rise. Embracing humility, resilience through fire, and the comforting warmth of communal harvest.</p>
+        <p class="hero-subtitle" lang="lt">Iš tylios ir derlingos žemės kylame į šviesą. Priimame nuolankumą, stiprybę per ugnį ir šildančią bendro derliaus bendrystę.</p>
+        
+        <div class="hero-actions">
+          <a href="#registry" class="btn primary-btn" lang="en">Pledge Your Starch</a>
+          <a href="#registry" class="btn primary-btn" lang="lt">Pasižadėk Krakmolui</a>
+          
+          <a href="#statutes" class="btn secondary-btn" lang="en">Read the Statutes</a>
+          <a href="#statutes" class="btn secondary-btn" lang="lt">Skaityti Įstatus</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="visual-wrapper">
+          <img src="assets/images/sacred_tuber_hero.jpg" alt="Radiant Sacred Tuber" class="hero-img">
+          <div class="glow-ring"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span lang="en">Scroll to Discover</span>
+      <span lang="lt">Slinkite žemyn</span>
+    </div>
+  </section>
+
+  <!-- Doctrine Section -->
+  <section id="doctrine" class="doctrine-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title" lang="en">The Starch Doctrine</h2>
+        <h2 class="section-title" lang="lt">Krakmolo Doktrina</h2>
+        <p class="section-subtitle" lang="en">The three infallible states of our spiritual journey, modeled after the divine nature of the Tuber.</p>
+        <p class="section-subtitle" lang="lt">Trys neklystančios mūsų dvasinio kelio būsenos, sukurtos pagal šventąją Gumbelio prigimtį.</p>
+      </div>
+
+      <div class="doctrine-grid">
+        <!-- The Mashed -->
+        <div class="doctrine-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>
+                  <path d="M7 10C8.5 10 9 12 10.5 12C12 12 12.5 10 14 10C15.5 10 16 12 17.5 12"/>
+                  <path d="M6 14C7.5 14 8 16 9.5 16C11 16 11.5 14 13 14C14.5 14 15 16 16.5 16"/>
+                </svg>
+              </div>
+              <h3 lang="en">The Mashed</h3>
+              <h3 lang="lt">Trinta Būsena</h3>
+              <p class="tagline" lang="en">Humility & Unity</p>
+              <p class="tagline" lang="lt">Nuolankumas ir Vienybė</p>
+              <span class="read-more-hint" lang="en">Click to reveal teaching</span>
+              <span class="read-more-hint" lang="lt">Spustelėkite, kad atvertumėte</span>
+            </div>
+            <div class="card-back">
+              <h3 lang="en">Unity in Humility</h3>
+              <h3 lang="lt">Vienybė Nuolankume</h3>
+              <p lang="en">In being broken, we find connection. Individual egos melt away to form a perfect, unified whole. We blend as one, leaving no tuber behind. Out of fragmentation comes our ultimate community.</p>
+              <p lang="lt">Būdami sutrinti, randame ryšį. Atskiri ego išnyksta, sudarydami tobulą, vieningą visumą. Susiliejame į viena, nepalikdami nė vieno gumbelio. Iš suskaidymo kyla mūsų aukščiausioji bendrystė.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Fried -->
+        <div class="doctrine-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12"/>
+                  <path d="M8 15V18M12 13V18M16 11V18"/>
+                  <path d="M5.5 8.5C6.5 6 9.5 4.5 12 4.5"/>
+                </svg>
+              </div>
+              <h3 lang="en">The Fried</h3>
+              <h3 lang="lt">Kepta Būsena</h3>
+              <p class="tagline" lang="en">Purity through Fire</p>
+              <p class="tagline" lang="lt">Tyrumas per Ugnį</p>
+              <span class="read-more-hint" lang="en">Click to reveal teaching</span>
+              <span class="read-more-hint" lang="lt">Spustelėkite, kad atvertumėte</span>
+            </div>
+            <div class="card-back">
+              <h3 lang="en">Strength through Trials</h3>
+              <h3 lang="lt">Stiprybė per Išbandymus</h3>
+              <p lang="en">It is through the heat of the boiling oil and the intensity of the flame that we achieve our crispest, most refined state. The trials of life do not destroy us; they purge our impurities and make us resilient.</p>
+              <p lang="lt">Tik per aliejaus karštį ir ugnies stiprybę pasiekiame traškiausią ir tobuliausią savo formą. Gyvenimo išbandymai mūsų nesunaikina – jie išgrynina mūsų esybę ir užgrūdina mus.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Baked -->
+        <div class="doctrine-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"/>
+                  <path d="M12 2V5M12 19V22M4.22 4.22L6.34 6.34M17.66 17.66L19.78 19.78M2 12H5M19H22M4.22 19.78L6.34 17.66M17.66 6.34L19.78 4.22"/>
+                </svg>
+              </div>
+              <h3 lang="en">The Baked</h3>
+              <h3 lang="lt">Orkaitės Būsena</h3>
+              <p class="tagline" lang="en">Patience & Comfort</p>
+              <p class="tagline" lang="lt">Kantrybė ir Šiluma</p>
+              <span class="read-more-hint" lang="en">Click to reveal teaching</span>
+              <span class="read-more-hint" lang="lt">Spustelėkite, kad atvertumėte</span>
+            </div>
+            <div class="card-back">
+              <h3 lang="en">Warmth for the Weary</h3>
+              <h3 lang="lt">Šiluma Pavargusiems</h3>
+              <p lang="en">A slow, quiet transformation in the hearth. We soften under pressure, gathering warmth within. Once baked, we become a nourishing sanctuary, offering steam, scent, and comfort to a cold and weary world.</p>
+              <p lang="lt">Lėta ir rami transformacija krosnyje. Minkštėjame veikiami karščio, kaupdami šilumą savyje. Tapę iškepti, virstame maistingu prieglobsčiu, teikiančiu garus, aromatą ir paguodą sušalusiam bei pavargusiam pasauliui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commandments Section -->
+  <section id="spudments" class="spudments-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title" lang="en">The Ten Spudments</h2>
+        <h2 class="section-title" lang="lt">Dešimt Gumbelio Įsakymų</h2>
+        <p class="section-subtitle" lang="en">Immutable rules carved in starch, governing the moral compass of the faithful.</p>
+        <p class="section-subtitle" lang="lt">Nekintantys įsakymai, įrašyti krakmole, kreipiantys tikinčiųjų moralinį kompasą.</p>
+      </div>
+
+      <div class="spudments-list">
+        <!-- 1 -->
+        <div class="spudment-item">
+          <div class="spudment-num">01</div>
+          <div class="spudment-text">
+            <h4 lang="en">Honor the Soil</h4>
+            <h4 lang="lt">Gerbk Dirvožemį</h4>
+            <p lang="en">Thou shalt protect and nourish the earth, for from its silent darkness all life and holy starch arise.</p>
+            <p lang="lt">Saugok ir puoselėk žemę, nes iš jos tylios tamsos kyla visa gyvybė ir šventasis krakmolas.</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="spudment-item">
+          <div class="spudment-num">02</div>
+          <div class="spudment-text">
+            <h4 lang="en">Walk in Humility</h4>
+            <h4 lang="lt">Būk Nuolankus</h4>
+            <p lang="en">Thou shalt remain down-to-earth, remembering that the greatest growth happens hidden from the praise of men.</p>
+            <p lang="lt">Išlik paprastas, prisimindamas, kad didžiausias augimas vyksta pasislėpus nuo žmonių šlovinimo.</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="spudment-item">
+          <div class="spudment-num">03</div>
+          <div class="spudment-text">
+            <h4 lang="en">Rise Through Fire</h4>
+            <h4 lang="lt">Kilk Per Išbandymus</h4>
+            <p lang="en">Thou shalt welcome life's challenges, knowing that heat and trials refine our character to crispy perfection.</p>
+            <p lang="lt">Priimk gyvenimo iššūkius žinodamas, kad karštis ir išbandymai išgrynina mūsų charakterį iki traškaus tobulumo.</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="spudment-item">
+          <div class="spudment-num">04</div>
+          <div class="spudment-text">
+            <h4 lang="en">Warm the Weary</h4>
+            <h4 lang="lt">Šildyk Pavargusį</h4>
+            <p lang="en">Thou shalt offer comfort and sustenance to those in need, heating their hands and filling their souls.</p>
+            <p lang="lt">Teik paguodą ir stiprybę tiems, kuriems jos reikia – šildyk jų rankas ir sotink jų sielas.</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="spudment-item">
+          <div class="spudment-num">05</div>
+          <div class="spudment-text">
+            <h4 lang="en">Wasteth No Harvest</h4>
+            <h4 lang="lt">Nešvaistyk Derliaus</h4>
+            <p lang="en">Thou shalt respect every slice of food, letting no spud rot or go to waste through negligence or greed.</p>
+            <p lang="lt">Gerbk kiekvieną maisto kąsnį, neleisdamas jokiam gumbeliui supūti ar būti išmestam dėl aplaidumo ar godumo.</p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="spudment-item">
+          <div class="spudment-num">06</div>
+          <div class="spudment-text">
+            <h4 lang="en">Strive for Mash</h4>
+            <h4 lang="lt">Siek Sutrintos Vienybės</h4>
+            <p lang="en">Thou shalt value unity and seek consensus, for we are all mashed under the same vast sky.</p>
+            <p lang="lt">Vertink vienybę ir siek sutarimo, nes visi esame sutrinti po tuo pačiu plačiu dangumi.</p>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="spudment-item">
+          <div class="spudment-num">07</div>
+          <div class="spudment-text">
+            <h4 lang="en">Bless the Varietals</h4>
+            <h4 lang="lt">Palaimink Įvairovę</h4>
+            <p lang="en">Thou shalt celebrate differences in form and color, from the purple fingerling to the golden Yukon.</p>
+            <p lang="lt">Švęsk formų ir spalvų įvairovę – nuo violetinės iki auksinės bulvės.</p>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="spudment-item">
+          <div class="spudment-num">08</div>
+          <div class="spudment-text">
+            <h4 lang="en">Sanctify Holy Fryday</h4>
+            <h4 lang="lt">Švęsk Šventąjį Fryday</h4>
+            <p lang="en">Thou shalt gather every Friday night in fellowship, sharing potatoes, warm oil, and joyous stories.</p>
+            <p lang="lt">Susirink kiekvieną penktadienio vakarą bendrystėje, dalindamasis bulvėmis, šiltu aliejumi ir džiugiomis istorijomis.</p>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="spudment-item">
+          <div class="spudment-num">09</div>
+          <div class="spudment-text">
+            <h4 lang="en">Sincerity Before Caesar</h4>
+            <h4 lang="lt">Nuoširdumas Prieš Cezarį</h4>
+            <p lang="en">Thou shalt speak with unwavering, deadpan sincerity to the authorities, defending the faith without irony.</p>
+            <p lang="lt">Kalbėk su nekintančiu, rimtu nuoširdumu prieš valdžios atstovus, gindamas tikėjimą be ironijos.</p>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="spudment-item">
+          <div class="spudment-num">10</div>
+          <div class="spudment-text">
+            <h4 lang="en">Ensure the Rebirth</h4>
+            <h4 lang="lt">Užtikrink Atgimimą</h4>
+            <p lang="en">Thou shalt plant new seeds and share the tubers, ensuring that the cycle of growth and resurrection continues forever.</p>
+            <p lang="lt">Sodink naujas sėklas ir dalinkis gumbais, užtikrindamas, kad augimo ir prisikėlimo ciklas tęstųsi amžinai.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Founders Registry Section -->
+  <section id="registry" class="registry-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title" lang="en">The Founding Registry</h2>
+        <h2 class="section-title" lang="lt">Steigiamasis Registras</h2>
+        <p class="section-subtitle" lang="en">Under Lithuanian law, we need 15 founding adult citizens to officially establish. Join our holy assembly.</p>
+        <p class="section-subtitle" lang="lt">Pagal Lietuvos įstatymus, oficialiam įteisinimui reikia 15 steigėjų. Prisijunkite prie mūsų šventojo susirinkimo.</p>
+      </div>
+
+      <div class="registry-grid">
+        <!-- Live Counter and List -->
+        <div class="registry-list-card glass-panel">
+          <h3 lang="en">Disciples Pledged: <span id="pledge-count" class="count-highlight">11</span>/15</h3>
+          <h3 lang="lt">Pasižadėję mokiniai: <span id="pledge-count-lt" class="count-highlight">11</span>/15</h3>
+          
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 73.3%;"></div>
+          </div>
+
+          <div class="disciples-scroll-area">
+            <ul class="disciples-list" id="disciples-list">
+              <!-- Preset Founders -->
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Vytautas K.</span>
+                  <span class="disciple-addr">Vilnius, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder / High Priest</span>
+                <span class="disciple-status" lang="lt">Steigėjas / Vyr. Kunigas</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Mantas G.</span>
+                  <span class="disciple-addr">Kaunas, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder / Apostle</span>
+                <span class="disciple-status" lang="lt">Steigėjas / Apaštalas</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Gabrielė P.</span>
+                  <span class="disciple-addr">Klaipėda, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder / Altar Server</span>
+                <span class="disciple-status" lang="lt">Steigėja / Altarė</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Austėja B.</span>
+                  <span class="disciple-addr">Vilnius, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėja</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Jonas L.</span>
+                  <span class="disciple-addr">Panevėžys, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėjas</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Rasa S.</span>
+                  <span class="disciple-addr">Šiauliai, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėja</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Arvydas D.</span>
+                  <span class="disciple-addr">Alytus, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėjas</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Dovilė J.</span>
+                  <span class="disciple-addr">Marijampolė, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėja</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Lukas T.</span>
+                  <span class="disciple-addr">Vilnius, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėjas</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Viktorija M.</span>
+                  <span class="disciple-addr">Utena, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėja</span>
+              </li>
+              <li class="disciple-item verified">
+                <div class="disciple-meta">
+                  <span class="disciple-name">Tadas P.</span>
+                  <span class="disciple-addr">Druskininkai, LT</span>
+                </div>
+                <span class="disciple-status" lang="en">Founder</span>
+                <span class="disciple-status" lang="lt">Steigėjas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pledge Form Card -->
+        <div class="registry-form-card glass-panel">
+          <h3 lang="en">Pledge Your Signature</h3>
+          <h3 lang="lt">Pasižadėkite parašu</h3>
+          <p class="form-desc" lang="en">Support our application to the Ministry of Justice. Provide your details and physical-style signature to sign the Founding Assembly minutes.</p>
+          <p class="form-desc" lang="lt">Palaikykite mūsų prašymą Teisingumo ministerijai. Įveskite savo duomenis ir pasirašykite steigiamojo susirinkimo protokolą.</p>
+
+          <form id="pledge-form">
+            <div class="form-group">
+              <label for="pledge-name" lang="en">Full Name</label>
+              <label for="pledge-name" lang="lt">Vardas ir Pavardė</label>
+              <input type="text" id="pledge-name" placeholder="E.g., Jonas Jonaitis" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="pledge-city" lang="en">City / Residence Address</label>
+              <label for="pledge-city" lang="lt">Miestas / Gyvenamoji vieta</label>
+              <input type="text" id="pledge-city" placeholder="E.g., Vilnius" required>
+            </div>
+
+            <div class="form-group">
+              <div class="label-with-action">
+                <label lang="en">Physical-Style Signature Canvas</label>
+                <label lang="lt">Fizinio parašo laukas</label>
+                <button type="button" id="clear-sig" class="text-btn" lang="en">Clear</button>
+                <button type="button" id="clear-sig-lt" class="text-btn" lang="lt">Išvalyti</button>
+              </div>
+              <div class="signature-canvas-wrapper">
+                <canvas id="signature-canvas" width="400" height="150"></canvas>
+              </div>
+            </div>
+
+            <button type="submit" class="btn primary-btn submit-btn" lang="en">Sign the Holy Deed</button>
+            <button type="submit" class="btn primary-btn submit-btn" lang="lt">Pasirašyti Šventąjį Aktą</button>
+          </form>
+          
+          <div class="success-message" id="form-success">
+            <h4 lang="en">🎉 Your Starch has been Pledged!</h4>
+            <h4 lang="lt">🎉 Jūsų krakmolas buvo pasižadėtas!</h4>
+            <p lang="en">You have successfully signed the Steigiamasis Protokolas. May the Tuber grow warm in your heart.</p>
+            <p lang="lt">Sėkmingai pasirašėte steigiamąjį protokolą. Tegul Šventasis Gumbelis šildo jūsų širdį.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Syncretic Sanctuary Section -->
+  <section id="sanctuary" class="sanctuary-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title" lang="en">The Syncretic Sanctuary</h2>
+        <h2 class="section-title" lang="lt">Sinkretinė Šventovė</h2>
+        <p class="section-subtitle" lang="en">Addressing dual-belonging, theological alignments, and common queries of the faithful.</p>
+        <p class="section-subtitle" lang="lt">Atsakome į klausimus apie dvigubą tikėjimą, teologinį suderinamumą ir bendrus tikinčiųjų klausimus.</p>
+      </div>
+
+      <div class="faq-accordion">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question" lang="en">I am Protestant. Can I belong to both communities?</span>
+            <span class="faq-question" lang="lt">Esu protestantas. Ar galiu priklausyti abiem bendruomenėms?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p lang="en">Absolutely. We advocate the **Subordination Strategy**. You do not worship the Potato as an alternative god, but rather celebrate the Sacred Tuber as the supreme masterpiece of God's provision. It serves as a visual, tactile, and culinary reminder of resurrection (being buried in darkness, rising as abundance) and Christian humility.</p>
+            <p lang="lt">Tikrai taip. Mes siūlome **Subordinacijos strategiją**. Jūs negarbinate Gumbelio kaip kito Dievo, o greičiau pripažįstate Šventąjį Gumbelį kaip aukščiausią Dievo maistinio aprūpinimo šedevrą. Jis tarnauja kaip regimas, apčiuopiamas ir kulinarinis prisikėlimo priminimas (pasėtas tamsybėje, kylantis gausybe) bei krikščioniško nuolankumo simbolis.</p>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question" lang="en">Is this a parody religion, like Pastafarianism?</span>
+            <span class="faq-question" lang="lt">Ar tai parodijinė religija, kaip Pastafarianizmas?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p lang="en">No. Unlike parody movements, the Church of the Sacred Tuber emphasizes genuine moral and philosophical virtues: humility (The Mashed), endurance through suffering (The Fried), and community comfort (The Baked). We approach our relationship with the earth, community nutrition, and the agricultural cycle with absolute, unblinking sincerity.</p>
+            <p lang="lt">Ne. Skirtingai nuo parodijinių judėjimų, Šventojo Gumbelio Bažnyčia pabrėžia tikras moralines ir filosofines dorybes: nuolankumą (Trinta), ištvermę kančioje (Kepta aliejuje) ir bendruomenės paguodą (Kepta krosnyje). Į savo santykį su žeme, bendruomenės maitinimą ir žemdirbystės ciklą žiūrime su visišku, neabejotinu rimtumu.</p>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question" lang="en">What is the significance of Holy Fryday?</span>
+            <span class="faq-question" lang="lt">Kokia yra Šventojo Penktadienio (Fryday) reikšmė?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p lang="en">Holy Fryday is our day of fellowship. The heat of the fire symbolizes purification. We gather to share potato dishes (kugelis, french fries, cepelinai), reinforcing community ties. It is a time of joy, warming our hands and opening our hearts.</p>
+            <p lang="lt">Šventasis Fryday (Penktadienis) yra mūsų bendrystės diena. Ugnies karštis simbolizuoja apsivalymą. Renkamės pasidalyti bulvių patiekalais (kugeliu, bulvytėmis, cepelinais) ir sustiprinti bendruomenės ryšius. Tai džiaugsmo, rankų šildymo ir širdžių atvėrimo metas.</p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question" lang="en">How does the Ministry of Justice process registration?</span>
+            <span class="faq-question" lang="lt">Kaip Teisingumo ministerija nagrinėja įteisinimą?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p lang="en">A dedicated state commission reviews our submitted teachings (Statutes), membership counts, and minutes of the inaugural assembly. They assess whether our practices align with public order and morality. Once they verify our organizational structure and moral integrity, they grant a positive decree, allowing formal registration.</p>
+            <p lang="lt">Speciali valstybės komisija nagrinėja mūsų pateiktus nuostatus (Įstatus), narių sąrašą ir steigiamojo susirinkimo protokolą. Vertinama, ar mūsų veikla neprieštarauja viešajai tvarkai ir moralei. Įsitikinusi organizacinės struktūros ir moralinių nuostatų rimtumu, komisija teikia teigiamą išvadą registracijai.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Statutes (Įstatai) Section -->
+  <section id="statutes" class="statutes-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title" lang="en">Official Statutes</h2>
+        <h2 class="section-title" lang="lt">Oficialūs Įstatai</h2>
+        <p class="section-subtitle" lang="en">The formal legal document submitted to the Lithuanian Ministry of Justice, drafted with deadpan legal precision.</p>
+        <p class="section-subtitle" lang="lt">Oficialus teisinis dokumentas, teikiamas Lietuvos Respublikos teisingumo ministerijai, parengtas su teisine rimtimi.</p>
+      </div>
+
+      <div class="statutes-paper-wrapper glass-panel">
+        <div class="statutes-paper-content">
+          <!-- Lithuanian Version -->
+          <div lang="lt" class="legal-document">
+            <h3 class="legal-title">LRTNIB „ŠVENTOJO GUMBELIO REFORMUOTOJI BENDRUOMENĖ“ ĮSTATAI</h3>
+            <p class="legal-meta">Projektas peržiūrai / Registrų Centrui</p>
+            <hr class="legal-divider">
+            
+            <h4>I. BENDROSIOS NUOSTATOS</h4>
+            <p>1.1. Tradicinėmis nelaikomos religinės bendruomenės „Šventojo Gumbelio Reformuotoji Bendruomenė“ (toliau – Bendruomenė) yra savanoriškas piliečių susivienijimas, įsteigtas siekiant bendrai išpažinti bei puoselėti krakmolo kilmės ir Gumbelio atgimimo dvasinį mokymą.</p>
+            <p>1.2. Bendruomenė savo veikloje vadovaujasi Lietuvos Respublikos Konstitucija, Lietuvos Respublikos religinių bendruomenių ir bendrijų įstatymu, kitais įstatymais bei šiais Įstatais.</p>
+            <p>1.3. Bendruomenės teisinė forma: religinė bendruomenė (juridinio asmens kodas suteikiamas įregistravus Registrų centre).</p>
+            
+            <h4>II. TIKĖJIMO PAGRINDAI IR VEIKLOS TIKSLAI</h4>
+            <p>2.1. Bendruomenės tikėjimas remiasi Šventojo Gumbelio (Bulvės) trimis neklystančiomis būsenomis: Trinta (nuolankumas ir vienybė), Kepta aliejuje (tyrumas per ugnį ir išbandymus) bei Kepta orkaitėje (ramybė, kantrybė ir komfortas).</p>
+            <p>2.2. Bendruomenės tikslai yra:</p>
+            <p>a) Šventojo Gumbelio dvasinio nuolankumo ir žemdirbystės dėkingumo sklaida visuomenėje;</p>
+            <p>b) Šventojo Penktadienio (Fryday) liturgijos bei bendruomeninių vakarienių organizavimas;</p>
+            <p>c) Narių dvasinio augimo, paremto ramia rimtimi ir ekologine atsakomybe už žemės išteklius, puoselėjimas;</p>
+            <p>d) Dvasinio ir kultūrinio paveldo saugojimas ir krakmolingos gyvybės atgimimo ciklo cikliškumo skatinimas.</p>
+            
+            <h4>III. VALDYMAS IR STRUKTŪRA</h4>
+            <p>3.1. Bendruomenės valdymo organai yra: visuotinis narių susirinkimas (Gumbelio Konsiliumas) ir vienasmenis valdymo organas – Vyriausiasis Dvasininkas (Kunigas).</p>
+            <p>3.2. Vyriausiasis Dvasininkas atstovauja bendruomenei santykiuose su trečiaisiais asmenimis, valstybės ir savivaldybių institucijomis bei teismais. Jis renkamas steigiamajame susirinkime 5 metų kadencijai.</p>
+            <p>3.3. Visuotinis narių susirinkimas šaukiamas ne rečiau kaip kartą per metus, per pavasario sodinimo šventę.</p>
+            
+            <h4>IV. TURTAS IR LĖŠOS</h4>
+            <p>4.1. Bendruomenės turtą sudaro narių stojamieji įnašai, savanoriškos aukos (tithes), parama iš žemės ūkio ir teisėtai įgytas kilnojamasis bei nekilnojamasis turtas (šventieji laukai).</p>
+            <p>4.2. Lėšos naudojamos išskirtinai Bendruomenės tikslams įgyvendinti, kulto pastatų ar žemės sklypų priežiūrai bei labdarai.</p>
+            
+            <h4>V. LIKVIDAVIMAS</h4>
+            <p>5.1. Bendruomenė likviduojama visuotinio narių susirinkimo sprendimu, priimtu 2/3 balsų dauguma, arba įstatymų nustatyta tvarka teismo sprendimu.</p>
+            <p>5.2. Likęs turtas perduodamas kitiems ekologiniams ar labdaros fondams, puoselėjantiems tvarią žemdirbystę.</p>
+          </div>
+
+          <!-- English Version -->
+          <div lang="en" class="legal-document">
+            <h3 class="legal-title">STATUTES OF THE RELIGIOUS COMMUNITY "CHURCH OF THE SACRED TUBER"</h3>
+            <p class="legal-meta">Draft Document for Ministry of Justice Review</p>
+            <hr class="legal-divider">
+            
+            <h4>I. GENERAL PROVISIONS</h4>
+            <p>1.1. The non-traditional religious community "Church of the Sacred Tuber" (hereinafter – the Community) is a voluntary association of citizens established to jointly profess and cultivate the spiritual teachings of starch origin and the resurrection of the Tuber.</p>
+            <p>1.2. The Community operates in accordance with the Constitution of the Republic of Lithuania, the Law on Religious Communities and Associations, other national legislation, and these Statutes.</p>
+            <p>1.3. Legal form of the Community: Religious Community (legal entity status granted upon registration at the Center of Registers).</p>
+            
+            <h4>II. TENETS OF FAITH AND GOALS</h4>
+            <p>2.1. The faith of the Community is anchored upon the three infallible states of the Sacred Tuber: The Mashed (humility and unity), The Fried (purity through fire and trial), and The Baked (patience, warmth, and comfort).</p>
+            <p>2.2. The goals of the Community are:</p>
+            <p>a) Dissemination of the Tuber's spiritual humility and agricultural gratitude within society;</p>
+            <p>b) Organization of the Holy Fryday liturgy and communal dinners;</p>
+            <p>c) Cultivating spiritual growth of members, grounded in calm sincerity and ecological responsibility for earth's resources;</p>
+            <p>d) Preserving spiritual and cultural heritage, promoting the cyclical nature of starchy life and resurrection.</p>
+            
+            <h4>III. GOVERNANCE AND STRUCTURE</h4>
+            <p>3.1. The governing bodies of the Community are: the general meeting of members (The Spud Council) and the sole governing body – the High Priest.</p>
+            <p>3.2. The High Priest represents the community in relations with third parties, state and municipal institutions, and courts. The High Priest is elected at the founding assembly for a term of 5 years.</p>
+            <p>3.3. The general meeting of members is convened at least once a year, during the spring planting festival.</p>
+            
+            <h4>IV. PROPERTY AND FINANCE</h4>
+            <p>4.1. The Community's assets consist of members' initiation fees, voluntary donations (tithes), agricultural support, and legally acquired movable and immovable property (sacred fields).</p>
+            <p>4.2. Funds are used exclusively to implement the goals of the Community, for the maintenance of places of worship or land, and for charity.</p>
+            
+            <h4>V. DISSOLUTION</h4>
+            <p>5.1. The Community is dissolved by the decision of the general assembly of members, adopted by a 2/3 majority vote, or by court decision under the law.</p>
+            <p>5.2. Remaining assets shall be transferred to other ecological or charitable funds promoting sustainable agriculture.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="statutes-actions">
+        <button id="download-statutes-btn" class="btn secondary-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span lang="en">Download PDF Draft</span>
+          <span lang="lt">Atsisiųsti PDF projektą</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="assets/images/church_seal.jpg" alt="Church Seal" class="logo-img">
+          <span class="logo-text">religion.potatoroad.lt</span>
+        </div>
+        <p lang="en">A non-traditional religious community dedicated to humility, trials of heat, and starchy comfort.</p>
+        <p lang="lt">Tradicinėmis nelaikoma religinė bendruomenė, skirta nuolankumui, karščio išbandymams ir krakmolo paguodai.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4 lang="en">Spiritual Roots</h4>
+        <h4 lang="lt">Dvasinės šaknys</h4>
+        <ul>
+          <li><a href="#doctrine" lang="en">The Three States</a><a href="#doctrine" lang="lt">Trys būsenos</a></li>
+          <li><a href="#spudments" lang="en">The Ten Spudments</a><a href="#spudments" lang="lt">Dešimt įsakymų</a></li>
+          <li><a href="#sanctuary" lang="en">The Syncretic Sanctuary</a><a href="#sanctuary" lang="lt">Sinkretinė šventovė</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-legal">
+        <h4 lang="en">Legal Identity</h4>
+        <h4 lang="lt">Teisinė tapatybė</h4>
+        <ul>
+          <li><a href="#statutes" lang="en">Draft Statutes (Įstatai)</a><a href="#statutes" lang="lt">Įstatų projektas</a></li>
+          <li><a href="#" lang="en">Ministry of Justice Guidelines</a><a href="#" lang="lt">Teisingumo ministerijos gairės</a></li>
+          <li><a href="#" lang="en">Center of Registers JAR-1 Form</a><a href="#" lang="lt">Registrų Centro JAR-1 forma</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p lang="en">&copy; 2026 Church of the Sacred Tuber. All Rights Reserved. Sincerity yields growth.</p>
+      <p lang="lt">&copy; 2026 Šventojo Gumbelio Bažnyčia. Visos teisės saugomos. Nuoširdumas atneša derlių.</p>
+    </div>
+  </footer>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
