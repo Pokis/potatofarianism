@@ -201,16 +201,16 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.addEventListener('click', () => {
       const parent = trigger.parentElement;
       const content = trigger.nextElementSibling;
-      const isOpen = parent.classList.contains('active');
+      const isOpen = parent.classList.contains('expanded');
 
       // Close all accordion items
       document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
+        item.classList.remove('expanded');
         item.querySelector('.faq-content').style.maxHeight = null;
       });
 
       if (!isOpen) {
-        parent.classList.add('active');
+        parent.classList.add('expanded');
         content.style.maxHeight = content.scrollHeight + 'px';
       }
     });
@@ -226,7 +226,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================
-     8. Initialise Operations on Boot
+     8. Scroll Reveal Animation Logic
+     ========================================== */
+  const revealElements = document.querySelectorAll('.reveal');
+  
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if browser doesn't support IntersectionObserver
+    revealElements.forEach(el => el.classList.add('active'));
+  }
+
+  /* ==========================================
+     9. Initialise Operations on Boot
      ========================================== */
   resizeCanvas();
   initParticles();

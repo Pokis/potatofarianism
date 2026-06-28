@@ -889,12 +889,12 @@ body.lang-lt [lang="en"] { display: none !important; }
 }
 
 /* Open accordion states */
-.faq-item.active {
+.faq-item.expanded {
   border-color: var(--primary);
   background: rgba(212, 163, 92, 0.03);
 }
 
-.faq-item.active .faq-icon {
+.faq-item.expanded .faq-icon {
   transform: rotate(45deg);
   color: var(--accent);
 }
@@ -1144,5 +1144,212 @@ body.lang-lt [lang="en"] { display: none !important; }
   
   .statutes-paper-wrapper {
     padding: 30px 20px;
+  }
+}
+
+/* ==========================================
+   10. High-End Premium Upgrades (Blobs, Reveals, and Styles)
+   ========================================== */
+
+/* Background Glowing Gradient Blobs */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  -webkit-filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: floatBlob 25s infinite ease-in-out;
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 80%);
+  animation-duration: 22s;
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 80%);
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  top: 40%;
+  left: 60%;
+  width: 35vw;
+  height: 35vw;
+  background: radial-gradient(circle, #bfae96 0%, transparent 80%);
+  animation-duration: 25s;
+  animation-delay: -10s;
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, -40px) scale(1.15); }
+  66% { transform: translate(-40px, 50px) scale(0.9); }
+}
+
+/* Fluid Scroll Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Statutes Premium Double-Border Frame */
+.statutes-paper-wrapper {
+  border: 1.5px solid rgba(212, 163, 92, 0.25) !important;
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), inset 0 0 100px rgba(0, 0, 0, 0.85) !important;
+  background: linear-gradient(185deg, #171310, #090807) !important;
+}
+
+.statutes-paper-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px double rgba(212, 163, 92, 0.15);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Spudments Cards hover highlights */
+.spudment-item {
+  border-left: 3px solid transparent !important;
+  position: relative;
+}
+
+.spudment-item:hover {
+  border-left-color: var(--primary) !important;
+  box-shadow: 0 15px 35px rgba(212, 163, 92, 0.05);
+  transform: translateX(8px);
+}
+
+/* Language selector split pill upgrade */
+.lang-selector {
+  background: rgba(212, 163, 92, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 3px;
+  border-radius: 20px;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.lang-selector:hover {
+  border-color: var(--border-hover);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+}
+
+.lang-btn:hover {
+  color: var(--primary-bright);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #0e0c0a !important;
+  box-shadow: 0 4px 10px rgba(229, 124, 53, 0.2);
+}
+
+.lang-divider {
+  display: none;
+}
+
+/* Logo pulse animation */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 8px rgba(212, 163, 92, 0.2); border-color: var(--primary); }
+  50% { box-shadow: 0 0 20px rgba(212, 163, 92, 0.55); border-color: var(--primary-bright); }
+  100% { box-shadow: 0 0 8px rgba(212, 163, 92, 0.2); border-color: var(--primary); }
+}
+
+.logo-img {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Print view rules - limits printing exclusively to the Statutes paper */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  body > * {
+    display: none !important;
+  }
+  
+  #statutes, #statutes * {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  #statutes {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .statutes-paper-wrapper {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  
+  .statutes-paper-wrapper::after,
+  .statutes-paper-wrapper::before,
+  .section-header,
+  #download-statutes-btn {
+    display: none !important;
+  }
+  
+  .statutes-paper-content {
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-right: 0 !important;
+  }
+  
+  .legal-document {
+    color: black !important;
+    background: white !important;
+  }
+  
+  .legal-document h3, 
+  .legal-document h4 {
+    color: black !important;
+  }
+  
+  .legal-document p {
+    color: #333 !important;
   }
 }
